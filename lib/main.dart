@@ -43,14 +43,15 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             TextFormField(
               controller: _emailController,
+              keyboardType: TextInputType.emailAddress,
             ), //email
-            TextFormField(
-              controller: _passwordController,
-            ), //password
-            ElevatedButton(onPressed: (){
-              debugPrint("Email: ${_emailController.text}");
-              debugPrint("Password: ${_passwordController.text}");
-  }, child: Text("Submit"),
+            TextFormField(controller: _passwordController), //password
+            ElevatedButton(
+              onPressed: () {
+                debugPrint("Email: ${_emailController.text}");
+                debugPrint("Password: ${_passwordController.text}");
+              },
+              child: Text("Submit"),
             ),
           ],
         ),
