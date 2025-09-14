@@ -44,8 +44,13 @@ class _MyHomePageState extends State<MyHomePage> {
             TextFormField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(hintText: "Enter an Email"),
             ), //email
-            TextFormField(controller: _passwordController), //password
+            TextFormField(
+              controller: _passwordController,
+              obscureText: true,
+              decoration: InputDecoration(hintText: "Enter a Password"),
+            ), //password
             ElevatedButton(
               onPressed: () {
                 debugPrint("Email: ${_emailController.text}");
