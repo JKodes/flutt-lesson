@@ -53,7 +53,9 @@ class _MyHomePageState extends State<MyHomePage> {
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return "Please enter an email";
-                } else if (emailValid.hasMatch(value)) {}
+                } else if (!emailValid.hasMatch(value)) {
+                  return "Please enter a valid email";
+}
                 return null;
               },
             ), //email
