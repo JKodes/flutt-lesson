@@ -22,6 +22,8 @@ class _SignUpState extends State<SignUp> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const Image(image: AssetImage('assets/logo.png'), width: 200),
+            const SizedBox(height: 20),
             const Text(
               "Sign up to Journal",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -108,7 +110,7 @@ class _SignUpState extends State<SignUp> {
             TextButton(
               onPressed: () {
                 Navigator.of(
-                  context
+                  context,
                 ).pop(MaterialPageRoute(builder: (context) => const SignUp()));
               },
               child: Text("Already have an account? Log in!"),
