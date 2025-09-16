@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:twitterclone/signup.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -45,42 +47,87 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text("Login to Journal", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold ),),
-            TextFormField(
-              controller: _emailController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(hintText: "Enter an Email"),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return "Please enter an email";
-                } else if (!emailValid.hasMatch(value)) {
-                  return "Please enter a valid email";
-                }
-                return null;
-              },
-            ), //email
-            TextFormField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(hintText: "Enter a Password"),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return "Please enter a password";
-                } else if (value.length < 6) {
-                  return "Password must be atleast 6 characters";
-                }
-                return null;
-              },
-            ), //password
-            ElevatedButton(
-              onPressed: () {
-                if (_signInKey.currentState!.validate()) {
-                  debugPrint("Email: ${_emailController.text}");
-                  debugPrint("Password: ${_passwordController.text}");
-                }
-              },
-              child: Text("Submit"),
+            const Text(
+              "Login to Journal",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
+
+            Container(
+              margin: EdgeInsets.fromLTRB(15, 30, 15, 0),
+              padding: EdgeInsets.symmetric(vertical: 10),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: TextFormField(
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  hintText: "Enter an Email",
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 15,
+                    horizontal: 20,
+                  ),
+                ),
+
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Please enter an email";
+                  } else if (!emailValid.hasMatch(value)) {
+                    return "Please enter a valid email";
+                  }
+                  return null;
+                },
+              ),
+            ), //email
+            Container(
+              margin: EdgeInsets.all(15),
+              padding: EdgeInsets.symmetric(vertical: 10),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(30),
+              ),
+
+              child: TextFormField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: "Enter a Password",
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 15,
+                    horizontal: 20,
+                  ),
+                ),
+
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Please enter a password";
+                  } else if (value.length < 6) {
+                    return "Password must be atleast 6 characters";
+                  }
+                  return null;
+                },
+              ),
+            ), //password
+            Container(
+              width: 250,
+decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(30) ),
+              child: TextButton(
+                onPressed: () {
+                  if (_signInKey.currentState!.validate()) {
+                    debugPrint("Email: ${_emailController.text}");
+                    debugPrint("Password: ${_passwordController.text}");
+                  }
+                },
+                child: Text("Log in", style: TextStyle(color: Colors.white, fontSize: 18),),
+              ),
+            ),
+          TextButton(onPressed: (){
+  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUp() ));
+
+}, child: Text("Don't have an account? Sign up here"))
           ],
         ),
       ),
