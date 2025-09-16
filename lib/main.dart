@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:twitterclone/signup.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -47,6 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image(image: AssetImage('assets/logo.png'), width: 200),
+            SizedBox(height: 20),
             const Text(
               "Login to Journal",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -113,7 +114,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ), //password
             Container(
               width: 250,
-decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(30) ),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(30),
+              ),
               child: TextButton(
                 onPressed: () {
                   if (_signInKey.currentState!.validate()) {
@@ -121,13 +125,20 @@ decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circula
                     debugPrint("Password: ${_passwordController.text}");
                   }
                 },
-                child: Text("Log in", style: TextStyle(color: Colors.white, fontSize: 18),),
+                child: Text(
+                  "Log in",
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
               ),
             ),
-          TextButton(onPressed: (){
-  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUp() ));
-
-}, child: Text("Don't have an account? Sign up here"))
+            TextButton(
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => SignUp()));
+              },
+              child: Text("Don't have an account? Sign up here"),
+            ),
           ],
         ),
       ),
