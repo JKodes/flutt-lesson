@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text("Login to Journal"),
+            const Text("Login to Journal", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold ),),
             TextFormField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
