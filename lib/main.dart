@@ -31,21 +31,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  GlobalKey<FormState> _signInKey = GlobalKey();
+  final GlobalKey<FormState> _signInKey = GlobalKey();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final RegExp emailValid = RegExp(
-    r"^[a-zA0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
   );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFEFEFA),
-      appBar: AppBar(title: Text("Hello")),
       body: Form(
         key: _signInKey,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const Text("Login to Journal"),
             TextFormField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   return "Please enter an email";
                 } else if (!emailValid.hasMatch(value)) {
                   return "Please enter a valid email";
-}
+                }
                 return null;
               },
             ), //email
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return "Please enter a password";
-                } else if (value.length > 6) {
+                } else if (value.length < 6) {
                   return "Password must be atleast 6 characters";
                 }
                 return null;
@@ -74,8 +74,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ), //password
             ElevatedButton(
               onPressed: () {
-                debugPrint("Email: ${_emailController.text}");
-                debugPrint("Password: ${_passwordController.text}");
+                if (_signInKey.currentState!.validate()) {
+                  debugPrint("Email: ${_emailController.text}");
+                  debugPrint("Password: ${_passwordController.text}");
+                }
               },
               child: Text("Submit"),
             ),
