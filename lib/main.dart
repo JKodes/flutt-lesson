@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitterclone/providers.dart';
 import 'package:twitterclone/signup.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -138,6 +140,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ).push(MaterialPageRoute(builder: (context) => SignUp()));
               },
               child: Text("Don't have an account? Sign up here"),
+              children: [
+                Consumer(
+                  builder: (context, ref, child) {
+                    return Text(ref.read(normalProvider));
+                  }),
+              ],
             ),
           ],
         ),
