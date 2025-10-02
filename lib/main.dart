@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitterclone/providers.dart';
-import 'package:twitterclone/signup.dart';
+import 'package:twitterclone/pages/signup.dart';
 
 void main() {
   runApp(ProviderScope(child: const MyApp()));
@@ -143,7 +143,8 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Consumer(
                   builder: (context, ref, child) {
-                    return Text(ref.read(normalProvider));
+                    return Text(ref.read(normalProvider)),
+;Text(ref.read(messageProvider).when(data: data, error: error, loading: loading))
                   }),
               ],
             ),
