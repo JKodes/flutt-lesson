@@ -140,13 +140,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 ).push(MaterialPageRoute(builder: (context) => SignUp()));
               },
               child: Text("Don't have an account? Sign up here"),
-              children: [
-                Consumer(
-                  builder: (context, ref, child) {
-                    return Text(ref.read(normalProvider)),
-;Text(ref.read(messageProvider).when(data: data, error: error, loading: loading))
-                  }),
-              ],
+              //children: [
+              //  Consumer(
+               //   builder: (context, ref, child) {
+                  //  return Text(ref.read(normalProvider)),
+//;Text(ref.read(messageProvider).when(data: data, error: error, loading: loading))
+            //      }),
+         //     ],
             ),
           ],
         ),
